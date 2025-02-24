@@ -1,0 +1,707 @@
+@charset "UTF-8";
+.errlogin {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+}
+
+.errlogin .icon {
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.errlogin .error-image {
+  width: auto; /* Hoặc kích thước mong muốn */
+  height: 4.5rem; /* Hoặc kích thước mong muốn */
+  display: block;
+  margin: 0 auto;
+}
+
+.errlogin h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.errlogin p {
+  font-size: 18px;
+  margin-bottom: 25px;
+  color: #555;
+}
+
+.errlogin .cta-link {
+  font-size: 18px;
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.errlogin .cta-link:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+.errlogin .cta-link:focus {
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .errlogin {
+    padding: 30px;
+  }
+  .errlogin h1 {
+    font-size: 24px;
+  }
+  .errlogin p {
+    font-size: 16px;
+  }
+}
+nav {
+  background-color: rgb(25, 25, 161);
+}
+
+nav .fit-icon {
+  background-color: white;
+  padding-bottom: 0.5rem;
+}
+
+nav .list-group {
+  border-radius: unset;
+}
+
+nav img {
+  width: auto;
+  height: 50px;
+}
+
+nav .list-group-item {
+  background-color: rgb(25, 25, 161);
+}
+
+.create-toppic .card-tab {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: #28a745;
+  color: #fff;
+  border-radius: 4px;
+  position: relative;
+}
+
+.create-toppic .card-tab p {
+  margin: 0;
+  flex: 1;
+}
+
+.create-toppic .card-tab .remove-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.create-toppic .card-tab .remove-btn:hover {
+  color: #dc3545;
+}
+
+.create-toppic .popup-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 150px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+}
+
+.create-toppic .popup-results .result-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.create-toppic .popup-results .result-item:hover {
+  background: #f1f1f1;
+}
+
+.create-toppic .popup-results {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 50%;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+}
+
+.create-toppic .popup-results .result-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
+}
+
+.create-toppic .popup-results .result-item:last-child {
+  border-bottom: none;
+}
+
+.create-toppic .popup-results .result-item:hover {
+  background-color: #f8f9fa;
+}
+
+.create-toppic .popup-results .close-popup {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 20px;
+  color: #dc3545;
+  cursor: pointer;
+}
+
+.create-toppic .popup-results .close-popup:hover {
+  color: #a71d2a;
+}
+
+.formfor-advisor {
+  height: 5.4rem;
+}
+
+.formfor-student {
+  height: 15rem;
+}
+
+.student-accountinfo .edit-btn {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.student-accountinfo .position-relative:hover .edit-btn {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Ẩn input file và hiển thị chỉ label */
+input[type=file] {
+  display: block;
+}
+
+.student-accountinfo .edit-btn i {
+  color: #000;
+  font-size: 20px;
+}
+
+#searchResults {
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ccc;
+  width: 100%;
+  display: none;
+}
+
+#searchResults li {
+  max-height: 40px;
+  overflow: hidden;
+}
+
+.student-list {
+  height: 65vh;
+  /* Điều chỉnh để thêm vùng chứa nút */
+  width: 165vh;
+  overflow-y: auto;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.student-list .table th,
+.student-list .table td {
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  padding: 2 10px;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.student-list td input[type=checkbox],
+.student-list th input[type=checkbox] {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+.student-list .form-control-xs,
+.student-list .form-select-xs {
+  font-size: 0.7rem;
+  line-height: 1;
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+.student-list .cell-input {
+  margin: 0;
+  padding: 0.3rem;
+  box-sizing: border-box;
+  background-color: transparent;
+  width: 200px;
+}
+
+.student-list .cell-input:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 1px #007bff;
+}
+
+.student-list .button-container {
+  height: 50px;
+}
+
+.student-list .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1049;
+}
+
+.student-list .modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1050;
+  background-color: rgba(255, 255, 255, 0.1411764706);
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.student-list .modal-dialog {
+  width: 400px;
+}
+
+.student-dashboard .student-listtopic {
+  height: 15rem;
+  align-items: center;
+}
+
+.student-dashboard .student-listtopic .card .card-body p {
+  width: 15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.student-dashboard .card {
+  position: relative;
+  /* Đảm bảo thẻ <a> và icon được đặt tương đối với .card */
+}
+
+.student-dashboard .card-footer-details {
+  position: absolute;
+  bottom: 5px;
+  /* Khoảng cách từ đáy của card */
+  right: 5px;
+  /* Khoảng cách từ cạnh phải của card */
+}
+
+.student-dashboard .card-footer-details a {
+  font-size: 0.7rem;
+  text-decoration: underline;
+  color: #007bff;
+}
+
+.student-dashboard .card-icon-check {
+  position: absolute;
+  top: 5px;
+  /* Khoảng cách từ đỉnh của card */
+  right: 5px;
+  /* Khoảng cách từ cạnh phải của card */
+  font-size: 1.2rem;
+  color: green;
+}
+
+.student-dashboard .card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  /* Lớp phủ mờ */
+  z-index: 10;
+  /* Đảm bảo lớp phủ nằm trên cùng */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  pointer-events: auto;
+  /* Đảm bảo chỉ lớp phủ nhận sự kiện */
+  border-radius: 0.5rem;
+}
+
+.student-dashboard .card-overlay marquee {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.student-dashboard .card-overlay .btn-ok {
+  z-index: 11;
+}
+
+.project-list {
+  height: 65vh;
+  /* Điều chỉnh để thêm vùng chứa nút */
+  width: 165vh;
+  overflow-y: auto;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.project-list .table th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.project-list .table td {
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.project-list td input[type=checkbox],
+.project-list th input[type=checkbox] {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+.project-list .form-control-xs,
+.project-list .form-select-xs {
+  font-size: 0.7rem;
+  line-height: 1;
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+.project-list .cell-input {
+  margin: 0;
+  padding: 0.3rem;
+  box-sizing: border-box;
+  background-color: transparent;
+  width: 200px;
+}
+
+.project-list .cell-input:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 1px #007bff;
+}
+
+.project-list .button-container {
+  height: 50px;
+}
+
+.project-list .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1049;
+}
+
+.project-list .modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1050;
+  background-color: rgba(255, 255, 255, 0.1411764706);
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.project-list .modal-dialog {
+  width: 400px;
+}
+
+.container-main {
+  height: 70vh;
+}
+
+.container-main .container_process {
+  height: 400px;
+  scrollbar-width: thin;
+}
+
+.container-main .status-icon {
+  height: 1rem;
+  width: 1rem;
+  border: 1px solid lightgray;
+  border-radius: 50%;
+}
+
+.container-main .status-icon.completed {
+  background-color: #ffc107;
+}
+
+.container-main .status-icon.in-progress {
+  background-color: #28a745;
+}
+
+.container-main .status-icon.not-started {
+  background-color: #6c757d;
+}
+
+.container-main .description {
+  height: 10rem;
+}
+
+.container-main .process-card {
+  min-height: 250px;
+}
+
+.container-main .upload-file,
+.container-main .comments-section {
+  height: 100%;
+}
+
+.container-main .file-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.container-main .file-name {
+  max-width: 74%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.container-main #downloadFileBtn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/*Phần tiến trình*/
+.container-main .add_card_progress h1 {
+  opacity: 0.5;
+}
+
+.container-main .add_card_progress:hover h1 {
+  opacity: 1;
+}
+
+.container-main .add_progress_container {
+  display: none;
+}
+
+.container-main .title_progress,
+.container-main .content_progress {
+  cursor: pointer;
+}
+
+.container-main .title_progress:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 1px #007bff;
+  background-color: white !important;
+}
+
+.login-c .img-logo-1,
+.login-c .img-logo-2 {
+  width: 10rem;
+}
+
+.login-c .ico-bkc {
+  width: 30px;
+}
+
+.login-c .divider:after,
+.login-c .divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+.login-c .h-custom {
+  height: calc(100% - 73px);
+}
+
+@media (max-width: 450px) {
+  .login-c .h-custom {
+    height: 100%;
+  }
+}
+header .title {
+  align-items: flex-end;
+}
+
+footer {
+  height: 7vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+p {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+.header {
+  height: 120px;
+}
+
+.text-red {
+  color: #ED3338;
+}
+
+.font-xl {
+  font-size: 48px;
+}
+
+.inner-shadow {
+  box-shadow: inset 0px 1px 4px #c2bebe;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+
+.scroll-x {
+  overflow-x: scroll;
+}
+
+#nav_mobile:checked ~ #list_group_mobile {
+  display: block !important;
+}
+
+.topic_active {
+  background-color: #F67E29 !important;
+  color: white !important;
+}
+
+@property --progress {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+[role=progressbar] {
+  --size:132px;
+  --bar-width:20px;
+  width: var(--size);
+  aspect-ratio: 1/1;
+  background: conic-gradient(rgba(122, 211, 255, 0.7) var(--progress, 0), rgba(122, 211, 255, 0.3) 0%);
+  margin: 2em auto;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  transition: --progress 500ms linear;
+}
+[role=progressbar]::after {
+  content: attr(aria-valuenow) "%";
+  background: white;
+  border-radius: inherit;
+  width: calc(100% - var(--bar-width));
+  aspect-ratio: 1/1;
+  display: grid;
+  place-items: center;
+}
+[role=progressbar] span {
+  display: none;
+}
+
+.progressbar:not([role=progressbar]) {
+  color: red;
+}
+
+hr {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.reset {
+  all: revert;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #bab9b9;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a6a5a5;
+}
+
+/*# sourceMappingURL=app.css.map */

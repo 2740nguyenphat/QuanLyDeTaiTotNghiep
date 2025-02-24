@@ -1,0 +1,100 @@
+<div class="container my-2" style="height: 70vh;">
+    <div class="row p-2 h-100">
+        <div class="h-100 w-100">
+            <div class="border rounded-3 h-100 d-flex flex-column">
+                <!-- Header -->
+                <div class="text-primary bg-orange border rounded-top p-2 d-flex align-items-center justify-content-between"
+                    style="height: 60px;">
+                    <div class="fw-bold">Duyệt đề tài</div>
+                    <form action="" class="d-flex">
+                        <input type="text" class="form-control form-control-sm me-2" placeholder="Tìm kiếm"
+                            aria-label="Tìm kiếm">
+                        <button class="btn btn-sm btn-light border" type="submit" aria-label="Tìm kiếm">
+                            <i class="fa-solid fa-magnifying-glass fa-lg text-dark"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Table content -->
+                <div class="flex-grow-1 overflow-auto">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-light">
+                                <tr class="text-nowrap">
+                                    <th scope="col"><input type="checkbox" id="select-all"></th>
+                                    <th scope="col">Tên đề tài</th>
+                                    <th scope="col">Mô tả</th>
+                                    <th scope="col">Trạng thái</th>
+                                    <th scope="col">Sinh viên đăng kí</th>
+                                    <th scope="col" class="text-end">Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pending-projects-list" class="text-nowrap">
+                                {{#each listRegiToppic}}
+                                {{#each projectadvisors}}
+                                {{#if project}} <!-- Kiểm tra nếu có dữ liệu project -->
+                                <tr class="align-middle">
+                                    <th scope="row">
+                                        <input type="checkbox" class="project-checkbox" data-id="{{project.id}}">
+                                    </th>
+                                    <td>
+                                        <div class="student-list-container">{{project.title}}</div>
+                                    </td>
+                                    <td>
+                                        <div class="student-list-container">{{project.description}}</div>
+                                    </td>
+                                    <td>
+                                        {{#if (eq project.projectsregister.status 'pending')}}Chờ
+                                        duyệt{{else}}Khác{{/if}}
+                                    </td>
+                                    <td>
+                                        <div class="student-list-container">
+                                            {{#each project.projectstudents}}
+                                            {{#if student}} <!-- Kiểm tra nếu có dữ liệu student -->
+                                            <span>{{student.lastname}} {{student.firstname}}
+                                                ({{student.studentID}})</span>
+                                            {{#unless @last}}, {{/unless}} <!-- Thêm dấu phẩy trừ lần cuối -->
+                                            {{/if}}
+                                            {{/each}}
+                                        </div>
+                                    </td>
+                                    <td class="text-end">
+                                        <button class="btn btn-success btn-sm approve-btn"
+                                            data-id="{{project.id}}">Duyệt</button>
+                                        <button class="btn btn-danger btn-sm reject-btn"
+                                            data-id="{{project.id}}">Hủy</button>
+                                    </td>
+                                </tr>
+                                {{/if}}
+                                {{/each}}
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="border rounded-bottom p-2 d-flex justify-content-end align-items-center"
+                    style="height: 50px;">
+                    <div class="add-account-section d-flex align-items-center gap-2" style="flex-grow: 1;">
+                        <span id="selected-count">0 đề tài được chọn</span>
+                    </div>
+                    <button id="approve-selected" type="button" class="btn btn-success btn-sm mx-1">Duyệt đã
+                        chọn</button>
+                    <button id="reject-selected" type="button" class="btn btn-danger btn-sm mx-1">Hủy đã chọn</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .student-list-container {
+        max-width: 300px;
+        white-space: nowrap;
+        overflow-x: auto;
+        scrollbar-width: thin;
+    }
+</style>
+
+<script src="/js/advisor-approve-topic.js"></script>

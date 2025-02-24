@@ -1,0 +1,48 @@
+<nav class="h-100 d-flex flex-column">
+    <div class="d-flex justify-content-center align-items-center fit-icon">
+        <img src="/img/logo_khoabkc.jpg" alt="">
+    </div>
+    {{!-- menu --}}
+    <div class="flex-grow-1">
+        <ul class="list-group mt-3">
+            {{#if (eq role 'student')}}
+            <a href="/student/dashboard" class="list-group-item text-light border-0"><i class="fa-solid fa-house px-2"></i>Trang chủ</a>
+            <a href="/project/project-list" class="list-group-item text-light border-0"><i class="fa-solid fa-list px-2"></i>Danh sách đề tài</a>
+            <a href="/student/register-topic" class="list-group-item text-light border-0"><i class="fa-solid fa-pen px-2"></i>Đăng kí đề tài</a>
+            {{/if}}
+            {{#if (eq role 'advisor')}}
+            <a href="/advisor/assigned-topic-list" class="list-group-item text-light border-0"><i class="fa-solid fa-chalkboard-user px-2"></i>Các đề tài hướng dẫn</a>
+            <a href="/advisor/approve-topic-list" class="list-group-item text-light border-0"><i class="fa-solid fa-check-to-slot px-2"></i>Duyệt đề tài</a>
+            <a href="/project/project-list" class="list-group-item text-light border-0"><i class="fa-solid fa-list px-2"></i>Danh sách đề tài</a>
+            {{/if}}
+            {{#if (eq role 'admin')}}
+            <a href="/project/project-list" class="list-group-item text-light border-0">Danh sách đề tài</a>
+            <a href="/admin/advisor-management" class="list-group-item text-light border-0">Quản lí thông tin giảng viên</a>
+            <a href="/admin/student-management" class="list-group-item text-light border-0">Quản lí thông tin sinh viên</a>
+            {{/if}}
+        </ul>
+    </div>
+    <div>
+        <a href="/logout" class="list-group-item text-light border-0 m-3"><i
+                class="fa-solid fa-right-from-bracket px-2"></i>Đăng xuất</a>
+    </div>
+</nav>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Lấy đường dẫn hiện tại
+        const currentPath = window.location.pathname;
+
+        // Tìm tất cả các liên kết trong thanh điều hướng
+        const navLinks = document.querySelectorAll(".list-group-item");
+
+        // Lặp qua từng liên kết và kiểm tra nếu đường dẫn trùng khớp
+        navLinks.forEach(link => {
+            if (link.getAttribute("href") === currentPath) {
+                // Thêm lớp 'active' để làm nổi bật
+                link.classList.add("active");
+            }
+        });
+    });
+</script>

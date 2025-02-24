@@ -1,0 +1,86 @@
+<div class="container my-2" style="height: 70vh;">
+    <div class="row p-2 h-100">
+        <div class="h-100 w-100">
+            <div class="border rounded-3 h-100 d-flex flex-column">
+                <!-- Header -->
+                <div class="text-primary bg-orange border rounded-top p-2 d-flex align-items-center justify-content-between"
+                    style="height: 60px;">
+                    <div class="fw-bold">Danh sách đề tài đang hướng dẫn</div>
+                    <form action="" class="d-flex">
+                        <input type="text" class="form-control form-control-sm me-2" placeholder="Tìm kiếm"
+                            aria-label="Tìm kiếm">
+                        <button class="btn btn-sm btn-light border" type="submit" aria-label="Tìm kiếm">
+                            <i class="fa-solid fa-magnifying-glass fa-lg text-dark"></i>
+                        </button>
+                    </form>
+                </div>
+                <!-- Table content -->
+                <div class="flex-grow-1 overflow-auto">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-light">
+                                <tr class="text-nowrap">
+                                    <th scope="col">Tên đề tài</th>
+                                    <th scope="col">Mô tả</th>
+                                    <th scope="col">Trạng thái</th>
+                                    <th scope="col">Sinh viên đăng kí</th>
+                                    <th scope="col" class="text-end">Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pending-projects-list" class="text-nowrap">
+                                {{#each listRegiToppic}}
+                                {{#each projectadvisors}}
+                                {{#if project}} <!-- Kiểm tra nếu có dữ liệu project -->
+                                <tr class="align-middle">
+                                    <td>
+                                        <div class="student-list-container">{{project.title}}</div>
+                                    </td>
+                                    <td>
+                                        <div class="student-list-container">{{project.description}}</div>
+                                    </td>
+                                    <td>
+                                        {{#if (eq project.status 'in_progress')}}
+                                            Đang thực hiện
+                                        {{else}}
+                                            Hoàn thành
+                                        {{/if}}
+                                    </td>
+                                    <td>
+                                        <div class="student-list-container">
+                                            {{#each project.projectstudents}}
+                                            {{#if student}} <!-- Kiểm tra nếu có dữ liệu student -->
+                                            <span>{{student.lastname}} {{student.firstname}}
+                                                ({{student.studentID}})</span>
+                                            {{#unless @last}}, {{/unless}} <!-- Thêm dấu phẩy trừ lần cuối -->
+                                            {{/if}}
+                                            {{/each}}
+                                        </div>
+                                    </td>
+                                    <td class="text-end">
+                                        <a href="/project/{{project.id}}/detail" class="">Xem chi tiết>></a>
+                                    </td>
+                                </tr>
+                                {{/if}}
+                                {{/each}}
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Footer -->
+                <div class="border rounded-bottom p-2 d-flex justify-content-end align-items-center"
+                    style="height: 50px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .student-list-container {
+        max-width: 300px;
+        white-space: nowrap;
+        overflow-x: auto;
+        scrollbar-width: thin;
+    }
+</style>

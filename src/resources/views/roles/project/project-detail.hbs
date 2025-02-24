@@ -1,0 +1,152 @@
+{{#if projectDetails}}
+<div class="container my-2 scroll container-main">
+    <div class="row gy-2">
+        <div class="col-12">
+            <h1 class="fs-1">{{projectDetails.title}}</h1>
+        </div>
+        <div class="col-12">
+            {{#if (eq projectDetails.status 'completed')}}
+            <p class="text-gray fw-lighter"><strong>{{formatDate start_date}}</strong> đến <strong>{{formatDate
+                    end_date}}</strong></p>
+            {{else}}
+            <p class="text-gray fw-lighter">{{formatDate start_date}}</p>
+            {{/if}}
+            <div class="d-flex">
+                <p>Chuyên ngành: {{projectDetails.major.name}}</p>
+            </div>
+            <div class="d-flex align-items-center">
+                {{#if (eq projectDetails.status 'completed')}}
+                <div class="status-icon completed"></div>
+                <p class="mx-2 text-warning">Trạng thái: Hoàn thành</p>
+                {{else if (eq projectDetails.status 'in_progress')}}
+                <div class="status-icon in-progress"></div>
+                <p class="mx-2 text-success">Trạng thái: Đang thực hiện</p>
+                {{else}}
+                <div class="status-icon not-started"></div>
+                <p class="mx-2 text-secondary">Trạng thái: Chưa bắt đầu</p>
+                {{/if}}
+            </div>
+        </div>
+        <div class="col-lg-7 col-12">
+            <p class="fs-4 fw-bold">Mô tả đề tài</p>
+            <textarea
+                class="border rounded p-1 overflow-auto w-100 description">{{projectDetails.description}}</textarea>
+        </div>
+        <div class="col-lg-5 col-12">
+            <p class="fs-4 fw-bold">Thành viên tham gia:</p>
+            {{#each projectDetails.projectadvisors}}
+            <p>{{this.advisor.lastname}} {{this.advisor.firstname}} - Giảng viên</p>
+            {{/each}}
+            {{#each projectDetails.projectstudents}}
+            <p>{{this.student.studentID}} - {{this.student.lastname}} {{this.student.firstname}} - Sinh viên lớp:
+                {{this.student.class.classID}}</p>
+            {{/each}}
+        </div>
+        <div class="col-12">
+            <p>Tiến độ dự án</p>
+        </div>
+        <div class="col-6">
+            <div class="container container_process overflow-auto">
+                <div class="row g-5">
+                    {{!-- render tiến trình ở đây --}}
+                    {{#each progress}}
+                    <div class="col-12 process-card">
+                        <div class="bg-light h-100 border rounded p-3 container_id d-flex flex-column">
+                            <!-- Tiêu đề -->
+                            <div class="d-flex align-items-center mb-2">
+                                <label for="title-{{this.id}}" class="form-label me-2 mb-0">Tiêu đề:</label>
+                                <input type="text" id="title-{{this.id}}"
+                                    class="form-control w-50 bg-transparent border-0 title_progress"
+                                    data-id="{{this.id}}" data-content="{{this.content}}" value="{{this.title}}"
+                                    readonly>
+                            </div>
+
+                            <!-- Nội dung -->
+                            <div class="d-flex flex-column flex-grow-1">
+                                <label for="content-{{this.id}}" class="form-label mb-1">Nội dung:</label>
+                                <textarea name="" id="content-{{this.id}}"
+                                    class="flex-grow-1 form-control content_progress" data-id="{{this.id}}"
+                                    data-title="{{this.title}}" style="resize: none;">{{this.content}}</textarea>
+                            </div>
+
+                            <div class="d-flex justify-content-end mt-3">
+                                <button class="remove_progress_btn btn btn-danger" value="{{this.id}}">Xóa</button>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                    {{!-- thêm thẻ tiến trình --}}
+                    <div class="col-12">
+                        <div class="h-100 border rounded d-flex justify-content-center p-2">
+                            <h1 class="add_icon h-100 w-100 text-center ">+</h1>
+                            <div class="add_progress_container d-flex justify-content-between w-100 d-none">
+                                <input type="text" class="form-control mx-1" placeholder="nhập tên tiến trình mới"
+                                    name="TitleProgress">
+                                <button type="button" class="btn btn-success add_progress_btn mx-1">Thêm</button>
+                                <button type="button" class="btn btn-danger cancel_btn mx-1">Hủy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="container h-100">
+                <div class="row h-100">
+                    <div class="col-lg-6 col-12 upload-file">
+                        <div class="upload-container border rounded h-100 p-3">
+                            <h6 class="text-center">File sản phẩm của đề tài tại đây</h6>
+                            <form id="uploadForm" enctype="multipart/form-data" class="form-upload">
+                                <div class="mb-3">
+                                    <label for="fileInput" class="form-label">Chọn file để tải lên
+                                        (.zip,.rar,.7z):</label>
+                                    <input type="file" name="file" id="fileInput" class="form-control" required
+                                        accept=".zip,.rar,.7z">
+                                </div>
+                                <button type="submit" class="btn btn-success w-100 mt-2">
+                                    <i class="fa-solid fa-upload me-2"></i> Tải lên
+                                </button>
+                                <input type="hidden" id="projectId" name="projectId" value="{{projectDetails.id}}" />
+                            </form>
+                            <!-- Thanh tiến trình -->
+                            <div class="progress mt-3 d-none">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                                    aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                            </div>
+                            <!-- Vùng hiển thị file đã tải lên -->
+                            <div id="uploadedFile" class="mt-3">
+                                <div class="file-container d-flex align-items-center">
+                                    <span id="fileName" class="file-name text-truncate"
+                                        title="{{#if projectFile}}{{projectFile.file_name}}{{/if}}">
+                                        {{#if projectFile}}
+                                        <p>Tệp đã tải lên</p>
+                                        {{projectFile.file_name}}
+                                        {{else}}
+                                        Chưa có file nào được tải lên.
+                                        {{/if}}
+                                    </span>
+                                    {{#if projectFile}}
+                                    <a href="{{projectFile.file_path}}" class="btn btn-sm btn-primary ms-2" download>
+                                        Tải xuống
+                                    </a>
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <!-- Vùng hiển thị thông báo -->
+                            <div id="uploadMessage" class="mt-3 text-center"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12 comments-section">
+                        <div class="border rounded h-100 p-3">
+                            <h6 class="text-center">Trao đổi</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{else}}
+<h1>Lỗi thông tin</h1>
+{{/if}}
+<script src="/js/project-detail.js"></script>

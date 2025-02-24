@@ -1,0 +1,155 @@
+@use "variable";
+@use "errlogin";
+@use "nav";
+@use "admin_createtoppic";
+@use "student_accountinfo";
+@use "student_registertopic";
+@use "admin_accountList";
+@use "student_dashboard";
+@use "project_list";
+@use "project_detail";
+@use "login";
+@use "header";
+@use "footer";
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+p{
+    margin: 0;
+}
+
+html,body{
+    height: 100%;
+}
+
+.header{
+    height: 120px;
+}
+
+
+.text-red{
+    color: variable.$red;
+}
+
+.font-xl{
+    font-size: variable.$xl;
+}
+
+.inner-shadow{
+    box-shadow: inset 0px 1px 4px #c2bebe;
+}
+
+
+
+// dashboard student
+
+.scroll{
+    overflow-y: scroll;
+}
+
+.scroll-x{
+    overflow-x: scroll;
+}
+
+// nav mobile
+
+#nav_mobile:checked ~ #list_group_mobile{
+    display: block!important;
+}
+
+.topic_active{
+    background-color: variable.$orange !important;
+    color: white !important;
+}
+
+//circular processing
+@property --progress{
+    syntax: "<length-percentage>";
+    inherits: false;
+    initial-value: 0%;
+}
+
+
+[role="progressbar"]{
+    
+    --size:132px;
+    --bar-width:20px;
+
+    width: var(--size);
+
+    aspect-ratio: 1/1;
+    
+    background: conic-gradient(
+        rgba(122,211,255,0.7) var(--progress,0),
+        rgba(122,211,255,0.3) 0%
+    );
+    margin: 2em auto;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size:20px;
+
+    transition: --progress 500ms linear;
+
+    &::after{
+        content: attr(aria-valuenow)"%";
+        background: white;
+        border-radius: inherit;
+        width: calc(100% - var(--bar-width));
+        aspect-ratio: 1/1;
+        display: grid;
+        place-items: center;
+    }
+    
+    span{
+        display: none;
+    }
+}
+
+.progressbar:not([role="progressbar"]){
+    color: red;
+}
+
+
+hr{
+    padding: 0;
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+
+// reset fieldset và legend
+.reset {
+    all: revert;
+}
+
+// scroll bars
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #bab9b9;
+
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a6a5a5;
+  }
